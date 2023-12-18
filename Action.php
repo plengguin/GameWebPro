@@ -12,12 +12,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="css/main.css" rel="stylesheet">
-    <script src="javas/slide.js"></script>
+    <script src="javas/app.js"></script>
     <title>x8</title>
 </head>
 <body>
     <!-- Nav Section Start -->
-    <?php include 'components/header.php';?>
+    <!-- <?php include 'components/header.php';?> -->
     <!-- Nav Section -->
 
     <!-- Banner Start-->
@@ -56,45 +56,12 @@
         </div></div>
 
     <!-- Banner End -->
-    <!-- What's new -->
-    
-    <h1 class="heading">What's new</h1>
-    
-    <?php
-        $select_ngame = $conn->prepare("SELECT * FROM `game` ORDER BY Upload_Date DESC LIMIT 5");
-        $select_ngame->execute();
-        $games = $select_ngame->fetchAll(PDO::FETCH_ASSOC);
 
-        if ($games && count($games) > 0) {
-            ?>
-            <section class="slide-card">
-                <div class="swiper">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($games as $game) : ?>
-                            <div class="swiper-slide swiper-slide--one">
-                                <span>New</span>
-                                <div>
-                                    <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $game['NameOfGame']; ?></p>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-            </section>
-        <?php
-        } else {
-            echo '<p class="empty">ไม่พบเกม!</p>';
-        }
-        ?>
-    
-                     
-    
-    <!-- What's new -->
     <!-- Add game information -->
     <section class="games">
         <h1 class="heading">All Games</h1>
     <?php
-        $select_game = $conn->prepare("SELECT * FROM `game`");
+        $select_game = $conn->prepare("SELECT * FROM `game` WHERE Category");
         $select_game->execute();
         if($select_game-> rowCount()>0){ while($fetch_game = $select_game-> fetch(PDO::FETCH_ASSOC)){
     ?>
@@ -145,26 +112,6 @@
                         ?>
                         
     </section>
-    <!-- Add game information -->       
-    <script>
-    var swiper = new Swiper(".swiper", {
-            effect: "coverflow",
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: "auto",
-            coverflowEffect: {
-              rotate: 0,
-              stretch: 0,
-              depth: 100,
-              modifier: 2,
-              slideShadows: true
-            },
-            spaceBetween: 60,
-            loop: true,
-            pagination: {
-              el: ".swiper-pagination",
-              clickable: true
-    }
-  });</script>  
+    <!-- Add game information -->         
 </body>
 </html>

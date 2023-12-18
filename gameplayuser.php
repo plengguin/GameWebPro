@@ -1,19 +1,39 @@
 <?php 
-    include('components/server.php');
+include('components/server.php');
 
-    if(isset($_COOKIE['GameID'])){
-        $GameID = $_COOKIE['GameID'];
-    }else{
-        setcookie('GameID',create_unique_GameID(),time()+60*60*24*30);
+if(isset($_COOKIE['GameID'])){
+    $GameID = $_COOKIE['GameID'];
+}else{
+    $GameID = create_unique_GameID();
+    setcookie('GameID', $GameID, time()+60*60*24*30);
+}
+
+if(isset($_POST['favorite'])){
+    $GameID = $_POST['GameID'];
+    $NameOfGame = $_POST['NameOfGame'];
+    $Category = $_POST['Category'];
+    $GameImage = $_POST['GameImage'];
+}
+
+
+if (isset($NameOfGame) && isset($GameImage) && isset($Category)) {
+    $select_fav = $conn->prepare("SELECT * FROM `favorite` WHERE name = ?");
+    $select_fav->execute([$NameOfGame]);
+
+    if ($select_fav->rowCount() > 0) {
+        $message[] = 'fav';
+    } else {
+        $insert_fav = $conn->prepare("INSERT INTO `favorite`(game_id, name, category, image) VALUES (?, ?, ?, ?)");
+        $insert_fav->execute([$GameID, $NameOfGame, $Category, $GameImage]);
     }
+}
 
-    if(isset($_GET['get_GameID'])){
-        $get_GameID = $_GET['get_GameID'];
-     }else{
-        $get_GameID = '';
-        header('location:main.php');
-     }
-    
+if(isset($_GET['get_GameID'])){
+    $get_GameID = $_GET['get_GameID'];
+}else{
+    $get_GameID = '';
+    header('location:main.php');
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,9 +62,14 @@
     <div class="desc">
         <button class="btndesc">Description</button>
     </div>
-    <div class="rate">
-        <button class="btnRating">Rating</button>
-    </div>
+    
+    <form method="post">
+    <input type="hidden" name="GameID" value="<?= $fetch_game['GameID']; ?>">
+    <input type="hidden" name="NameOfGame" value="<?= $fetch_game['NameOfGame']; ?>">
+    <input type="hidden" name="Category" value="<?= $fetch_game['Category']; ?>">
+    <input type="hidden" name="GameImage" value="<?= $fetch_game['GameImage']; ?>">
+    <input type="submit" class="Favbtn" value="Favorite" name="favorite">
+</form>
 
         <?php }}else {
     echo '<p class="empty">no game found!</p>';

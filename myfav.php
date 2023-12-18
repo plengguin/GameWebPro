@@ -19,24 +19,10 @@
     <!-- Nav Section Start -->
     <?php include 'components/userheader.php';?>
     <!-- Nav Section -->
-
-    <!-- Banner Start-->
-    <section class="banner">
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">categoly</a></li>
-            <li><a href="#">Other</a></li>
-            <li><input type="search" name="search" placeholder="Search"></li>
-    </section>
-    <!-- Banner End -->
-    <!-- Add game information -->
     <section class="games">
-        <h1 class="heading">All Games</h1>
+        <h1 class="heading">My Favorite</h1>
     <?php
-        $select_game = $conn->prepare("SELECT * FROM `game`");
+        $select_game = $conn->prepare("SELECT * FROM `favorite`");
         $select_game->execute();
         if($select_game-> rowCount()>0){ while($fetch_game = $select_game-> fetch(PDO::FETCH_ASSOC)){
     ?>

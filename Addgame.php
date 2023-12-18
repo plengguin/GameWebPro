@@ -11,12 +11,13 @@
     }else{
         setcookie('GameID',create_unique_GameID(),time()+60*60*24*30);
     }
+    
 
     if (isset($_POST['add_game'])) {
         $NameOfGame = filter_var($_POST['NameOfGame'], FILTER_SANITIZE_STRING);
         $GameCreator = filter_var($_POST['GameCreator'], FILTER_SANITIZE_STRING);
         $FilePath = filter_var($_POST['FilePath'], FILTER_SANITIZE_STRING);
-        $UploadDate = filter_var($_POST['UploadDate'], FILTER_SANITIZE_STRING);
+        $Category = isset($_POST['Category']) ? filter_var($_POST['Category'], FILTER_SANITIZE_STRING) : '';
         $GameDescription = filter_var($_POST['GameDescription'], FILTER_SANITIZE_STRING);
 
         $GameImage = $_FILES['GameImage']['name'];
@@ -36,15 +37,17 @@
             // รับ user_id จาก session
             $user_id = $_SESSION['user_login'];
 
-            $insert_game = $conn->prepare("INSERT INTO `game` (GameID, NameOfGame, GameCreator,
-            FilePath, UploadDate, GameDescription, GameImage, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            
+        
+        $insert_game = $conn->prepare("INSERT INTO game (GameID, NameOfGame, GameCreator,
+        FilePath, Category, GameDescription, GameImage, user_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
-            // ไม่ต้องกำหนดค่า GameID เป็น 'YourGameID' แล้ว
-            $insert_game->execute([$GameID, $NameOfGame, $GameCreator, $FilePath, $UploadDate, $GameDescription, $rename, $user_id]);
-            $success_msg[] = 'Game uploaded!';
-            move_uploaded_file($image_tmp_name, $image_folder);
-        }
-    }
+        
+        $insert_game->execute([$GameID, $NameOfGame, $GameCreator, $FilePath, $Category, $GameDescription, $rename, $user_id]);
+        $success_msg[] = 'Game uploaded!';
+        move_uploaded_file($image_tmp_name, $image_folder);
+}}
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,11 +72,19 @@
             <input type="text" name="GameCreator" required maxlength="50" placeholder="Enter Game Creator" class="box">
             <p>Game Link<span>*</span></p>
             <input type="text" name="FilePath" required  placeholder="Enter Game Link" class="box">
-            <p>Upload Date<span>*</span></p>
-            <input type="date" name="UploadDate" required  placeholder="Enter Game Upload Date" class="box">
+
             <p>Game Description/How to play <span>*</span></p>
             <input type="text" name="GameDescription" required maxlength="350" placeholder="Enter Game Description" class="box-desc">
-            
+            <p>MainCategory<span>*</span></p>
+            <select name="Category" id="Category">
+            <option value="Action">Action and Adventure Games</option>
+                <option value="Driving">Driving</option>
+                <option value="Fighting">Fighting</option>
+                <option value="Girls">For girls</option>
+                <option value="Shooting">Shooting</option>
+                <option value="Sports">Sports</option>
+                <option value="Other">Other</option>
+            </select>
             <p>Game Image<span>*</span></p>
             <input type="file" name="GameImage" required accept="image/*" class="box">
             <input type="submit" value="Add game" name="add_game" class="btn">

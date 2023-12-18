@@ -1,7 +1,20 @@
 <?php 
 
-session_start();
-require_once 'components/server.php';
+    session_start();
+    require_once 'components/server.php';
+    if (isset($_GET['delete'])) {
+        $delete_id = $_GET['delete'];
+        $deletestmt = $conn->query("DELETE FROM users WHERE id = $delete_id");
+        $deletestmt->execute();
+
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            // $_SESSION['success'] = "Data has been deleted succesfully";
+            header("refresh:1; url=user.php");
+        }
+        
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +31,7 @@ require_once 'components/server.php';
 <body>
     <header>
     <nav>
-    <?php include 'components/header.php';?>
+        <?php include 'components/header.php';?>
     </nav>
     </header>
     <div class="container">
@@ -79,17 +92,15 @@ require_once 'components/server.php';
         ?>
         <!-- <?php echo $row['firstname']?> -->
 
-    <img src="image/aqua cry.png" alt="Italian Trulli" class = "profile_img">
+    <!-- <img src="image/aqua cry.png" alt="Italian Trulli" class = "profile_img"> -->
     <table class="table">
         <thead>
             <tr>
             <th scope="col">#</th>
-            <th scope="col">First name</th>
-            <th scope="col">Last name</th>
             <th scope="col">Username</th>
             <th scope="col">Email</th>
             <th scope="col">Date of birth</th>
-            <th scope="col">action</th>
+            <th scope="col">Profile image</th>
             </tr>
         </thead>
         <tbody>
@@ -97,22 +108,20 @@ require_once 'components/server.php';
             <tr>
 
             <th scope="row"><?= $row['id'];?></th>
-            <td><?= $row['firstname'];?></td>
-            <td><?= $row['lastname'];?></td>
             <td><?= $row['username'];?></td>
             <td><?= $row['email'];?></td>
-            <td><?= $row['date_of_birth'];?></td>
+            <td width="250px"><img class="rounded" width="100%" src="uploads/<?php echo $row['img']; ?>" alt=""></td>
+
 
 
             <th scope="row"><?= $user['id'];?></th>
-            <td><?= $user['firstname'];?></td>
-            <td><?= $user['lastname'];?></td>
             <td><?= $user['username'];?></td>
             <td><?= $user['email'];?></td>
-            <td><?= $user['date_of_birth'];?></td>
             <td>
                 <a href="edit.php?id=<?= $user['id']; ?>"></a>
-                <a href="edit.php?id=<?= $user['id']; ?>" class="btn btn-primary">Edit</a>
+                <a href="edit.php?id=<?= $row['id']; ?>" class="btn btn-primary">Edit</a>
+                <a href="?delete=<?= $row['id']; ?>" class="btn btn-danger" onclick="return confirm('are you sure you want to delete?')">Delete</a>
+                <a href="profile.php?id=<?php echo $row['id']; ?>" class="btn btn-primary">Profile</a>
             </td>
             </tr>
 

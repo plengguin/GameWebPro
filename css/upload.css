@@ -1,0 +1,119 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+*{
+    margin: 0;
+    padding:0%;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+
+}
+body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* 100% ของ Viewport Height */
+    margin: 0; /* ลบ margin ที่ถูกกำหนดมาตั้งแต่แรกเริ่ม */
+}
+nav{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    padding: 20px 200px;
+    background: #162938;
+    display:flex;
+    justify-content: space-between;
+    z-index: 99;
+    /* border:2px solid red; */
+}
+ul{
+    list-style: none;
+}
+ul li{
+    display: inline-block;
+    position: relative;
+}
+ul li a{
+    display: block;
+    padding:20px 25px;
+    color:white;
+    text-decoration: none;
+    text-align: center;
+}
+
+ul li ul.dropdown li{
+    display: block;
+}
+ul li ul.dropdown{
+    width: 100%;
+    background:#162938 ;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+ul li a:hover{
+    background:#162938 ;
+}
+ul li:hover ul.dropdown{
+    display: block;
+}
+.logo a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: 2em;
+    
+}
+
+.banner{
+    display: flex;
+    justify-content:center;
+    border: 2px solid red;
+    margin: 150px auto 50px auto;
+    list-style:none;
+    
+}
+.banner li{
+    padding-left: 20px;
+}
+
+.heading{
+    font-size: 20px;
+    color:black;
+    text-transform: capitalize;
+    margin-bottom:2rem;
+    text-align: center;
+ 
+}
+.empty{
+    background-color: white;
+    border:none;
+    box-shadow: 0 0 30px rgba(0,0, 0, .5);
+    color:red;
+    text-transform: capitalize;
+    font-size: 1rem;
+    text-align:center;
+    width:55%;
+    border-radius: .5rem;
+}
+.addgame{
+  margin-top: 150px;
+}
+@media screen and (max-width: 64rem){
+  .col{
+    width: calc(33.333333% - 2rem);
+  }
+}
+
+@media screen and (max-width: 48rem){
+  .col{
+    width: calc(50% - 2rem);
+  }
+}
+
+@media screen and (max-width: 32rem){
+  .col{
+    width: 100%;
+    margin: 0 0 2rem 0;
+  }
+}

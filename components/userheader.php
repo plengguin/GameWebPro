@@ -11,7 +11,7 @@
         </div>
         
         <ul>
-            <li><a href="#">My Favorite</a></li>
+            <li><a href="myfav.php">My Favorite</a></li>
             <li>
                 <a href="profile.php">Profile</a>
                     <ul class="dropdown">
