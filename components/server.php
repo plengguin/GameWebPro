@@ -1,20 +1,23 @@
-<?php
-    $dbname = "mysql:host=localhost;dbname=gameupload";
-    $db_user_name = "root";
-    $db_user_pass = "";
-    
+    <?php
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
 
-    //Create Connection
-    $conn = new PDO($dbname,$db_user_name,$db_user_pass);
-
-    function create_unique_GameID(){
-        $charecters =
-        '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-        $charecters_lenght = strlen($charecters);
-        $random = '';
-        for($i = 0; $i < 20; $i++){
-            $random = $charecters[mt_rand(0,$charecters_lenght -1)];
+        try {
+        $conn = new PDO("mysql:host=$servername;dbname=gameupload", $username, $password);
+        // set the PDO error mode to exception
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        // echo "Connected successfully";
+            } catch(PDOException $e) {
+            echo "Connection failed: " . $e->getMessage();
         }
-        return $random;
-    }
-?>
+        function create_unique_GameID() {
+            $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            $characters_length = strlen($characters);
+            $random = '';
+            for ($i = 0; $i < 20; $i++) {
+                $random = $characters[mt_rand(0, $characters_length - 1)];
+            }
+            return $random;
+        }
+    ?>

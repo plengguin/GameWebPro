@@ -1,11 +1,11 @@
 <nav>
         <div class="logo">
-            <a href="#">MySite</a>
+            <a href="main.php">MySite</a>
         </div>
-        
         <ul class="menu">
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Sign up</a></li>
-            <li><button class="btnLogin">Login</button></li>
+            <li><a href="#">My Favorite</a></li>
+            <li><a href="log-sig.php">Sign up</a></li>
+            <a href="signin.php"><li><button class="btnLogin">Login</button></li></a>
         </ul>
+        
 </nav>
