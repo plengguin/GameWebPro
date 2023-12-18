@@ -23,8 +23,8 @@ if (isset($NameOfGame) && isset($GameImage) && isset($Category)) {
     if ($select_fav->rowCount() > 0) {
         $message[] = 'fav';
     } else {
-        $insert_fav = $conn->prepare("INSERT INTO `favorite`(game_id, name, category, image) VALUES (?, ?, ?, ?)");
-        $insert_fav->execute([$GameID, $NameOfGame, $Category, $GameImage]);
+        $insert_fav = $conn->prepare("INSERT INTO `favorite`(game_id, name, category,description, image) VALUES (?, ?, ?, ?,?)");
+        $insert_fav->execute([$GameID, $NameOfGame, $Category,$GameDescription, $GameImage]);
     }
 }
 
@@ -67,6 +67,7 @@ if(isset($_GET['get_GameID'])){
     <input type="hidden" name="GameID" value="<?= $fetch_game['GameID']; ?>">
     <input type="hidden" name="NameOfGame" value="<?= $fetch_game['NameOfGame']; ?>">
     <input type="hidden" name="Category" value="<?= $fetch_game['Category']; ?>">
+    <input type="hidden" name="GameDescription" value="<?= $fetch_game['GameDescription']; ?>">
     <input type="hidden" name="GameImage" value="<?= $fetch_game['GameImage']; ?>">
     <input type="submit" class="Favbtn" value="Favorite" name="favorite">
 </form>

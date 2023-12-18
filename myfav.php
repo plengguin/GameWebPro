@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/mainuser.css" rel="stylesheet">
+    <link href="css/myfav.css" rel="stylesheet">
     <script src="javas/app.js"></script>
     <title>x8</title>
 </head>
@@ -22,38 +22,36 @@
     <section class="games">
         <h1 class="heading">My Favorite</h1>
     <?php
-        $select_game = $conn->prepare("SELECT * FROM `favorite`");
-        $select_game->execute();
-        if($select_game-> rowCount()>0){ while($fetch_game = $select_game-> fetch(PDO::FETCH_ASSOC)){
+        $select_fav = $conn->prepare("SELECT * FROM `favorite`");
+        $select_fav->execute();
+        if($select_fav-> rowCount()>0){ while($fetch_fav = $select_fav-> fetch(PDO::FETCH_ASSOC)){
     ?>
     <div class="wrapper">
         <div class="cols">
             <div class="col" ontouchstart="this.classList.toggle('hover');">
 
-            <a href="gameplayuser.php?get_GameID=<?=$fetch_game['GameID'];?>">
+            <a href="gameplayuser.php?get_GameID=<?=$fetch_fav['game_id'];?>">
 
                 <div class="container">
                     <div class="front">
                     <form action="" method="POST">
-                    <img src="uploaded_files/<?= $fetch_game['GameImage']; ?>" class="Gameimage" alt="">
+                    <img src="uploaded_files/<?= $fetch_fav['image']; ?>" class="image" alt="">
                         <div class="inner">
                             <span>
                                 <div class="creator_icon">
                                     <img src="" alt="">
                                 </div>
                                 <div class="game-name">
-                                    <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_game
-                                    ['NameOfGame']; ?></p>
+                                    <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_fav
+                                    ['name']; ?></p>
                                 </div>
-                                <div class="rate">
-                                    <p>ratings</p>
-                                </div>
+                                
                             </span>
                         </div><!--inner--> 
                     </div><!--front--> 
                     <div class="back">
                         <div class="inner">
-                            <p><?= $fetch_game['GameDescription'] ?></p>
+                            <p><?= $fetch_fav['description'] ?></p>
                         </div> <!--inner-->
                     </div> <!--back-->           
                     </form>
