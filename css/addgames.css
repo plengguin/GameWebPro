@@ -1,0 +1,168 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+*{
+    margin: 0;
+    padding:0%;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+
+}
+/* body{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+} */
+nav{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    padding: 20px 200px;
+    background: #162938;
+    display:flex;
+    justify-content: space-between;
+    z-index: 99;
+    /* border:2px solid red; */
+}
+.logo a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: 2em;
+    
+}
+.menu{
+    position: relative;
+    font-size: 1.1em;
+    color: white;
+    display: flex;
+    list-style: none;
+    
+
+}
+.menu li{
+    align-self: center  ;
+    margin-left: 20px;
+    /* border:2px solid red; */
+}
+
+.menu a{
+    position: relative;
+    text-decoration: none;
+    color: white;
+}
+.menu a::after{
+    content: '';
+    position:absolute;
+    left: 0;
+    bottom: -6px;
+    width: 100%;
+    height: 3px;
+    background-color: #fff;
+    border-radius: 5px;
+    transform-origin: right;
+    transform: scaleX(0);
+    transition: transform .5s ;
+}
+.menu a:hover::after{
+    transform-origin: left;
+    transform: scaleX(1);
+}
+.menu .btnLogin{
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid #fff;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: #fff;
+    font-weight: 500;
+    margin-left: 40px;
+    transition: .5s;
+}
+.menu .btnLogin:hover{
+    background: #fff;
+    color: #162938;
+}
+.banner{
+    display: flex;
+    justify-content:center;
+    border: 2px solid red;
+    margin: 10px 300px;
+    list-style:none;
+}
+.banner li{
+    padding-left: 20px;
+}
+
+
+
+.btn,.delete-btn{
+    display: block;
+    width: 100%;   
+    text-align: center;
+    margin-top: 1rem;
+    border-radius: .5rem;
+    color:white;
+    font-size: 1em;
+    text-transform: capitalize;
+    cursor: pointer;
+    padding: 1rem 3rem;
+}
+.btn{
+    background-color:lightseagreen;
+}
+.delete-btn{
+    background-color: red;
+}
+.btn:hover,.delete-btn:hover{
+    background-color: black;
+}
+.add-game{
+    display:flex;
+    align-items: center;
+    justify-content:center;
+    height: 730px;
+    border:2px solid red;
+    
+}
+.add-game form{
+    /* background-color: ; */
+    display:flex;
+    flex-direction: column;
+    justify-content:center;
+    border-radius: .5rem;
+    width: 35%;
+    padding:10px;
+    box-shadow: 0 0 30px rgba(0,0, 0, .5);
+    
+    
+}
+.add-game form h3{
+    text-transform: capitalize;
+    color:black;
+    padding-bottom:2px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.add-game form .box{
+    border:none;
+    padding: 0.5rem;
+    border-radius: .5rem;
+    background-color:lightgray;
+    font-size: 1rem;
+    color:black;
+    width: 100%;
+}
+
+.box-desc{
+    border-radius: .5rem;
+    min-height: 100px;
+    resize: vertical; /* Allow vertical resizing */
+}
+.add-game form p span{
+    color: red;
+
+}
