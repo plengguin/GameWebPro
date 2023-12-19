@@ -7,7 +7,7 @@
 <nav>
     
         <div class="logo">
-            <a href="mainuser.php">MySite</a>
+            <a href="mainuser.php">Z8</a>
         </div>
         
         <ul>
@@ -20,4 +20,4 @@
                     </ul>
                 </li>
         </ul>
-</nav>
+</nav>s

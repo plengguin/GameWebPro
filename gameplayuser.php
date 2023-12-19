@@ -40,7 +40,7 @@ if(isset($_GET['get_GameID'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/gameplayuser.css" rel="stylesheet">
+    <link href="css/gameplayusers.css" rel="stylesheet">
     <script src="javas/app.js"></script>
     <title>x8</title>
 </head>
@@ -93,13 +93,12 @@ if(isset($_GET['get_GameID'])){
         if($select_game-> rowCount()>0){ 
             while($fetch_game = $select_game-> fetch(PDO::FETCH_ASSOC)){
     ?>
+    <div class="gamebox">
+    <h1 class="heading"><?= $fetch_game['NameOfGame']; ?></h1>
     <div class="game-screen">
     <iframe src=<?= $fetch_game['FilePath']; ?> scrolling="no" class="screen"> </iframe>
     </div>  
     
-    <div class="desc">
-        <button class="btndesc">Description</button>
-    </div>
     
     <form method="post">
     <input type="hidden" name="GameID" value="<?= $fetch_game['GameID']; ?>">
@@ -109,7 +108,7 @@ if(isset($_GET['get_GameID'])){
     <input type="hidden" name="GameImage" value="<?= $fetch_game['GameImage']; ?>">
     <input type="submit" class="Favbtn" value="Favorite" name="favorite">
 </form>
-
+</div>
         <?php }}else {
     echo '<p class="empty">no game found!</p>';
 } ?>

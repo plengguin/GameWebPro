@@ -77,7 +77,7 @@
                     <div class="swiper-wrapper">
                         <?php foreach ($games as $game) : ?>
                             <div class="card">
-                                <a href="gameplay.php?get_GameID=<?= $game['GameID']; ?>">
+                                <a href="gameplayuser.php?get_GameID=<?= $game['GameID']; ?>">
                                 <span><p class="des"><i class="name"></i><?= $game['NameOfGame']; ?></p></span>
                                 <img src="uploaded_files/<?= $game['GameImage']; ?>" class="Gameimage" alt="">
                                 <p class="cate"><i class="fas fa-india-rupee-sign"></i><?= $game['Category']; ?></p>
@@ -107,7 +107,7 @@
 ?>
         <div class="wrapper">
             
-                <a href="gameplay.php?get_GameID=<?= $fetch_game['GameID']; ?>">
+                <a href="gameplayuser.php?get_GameID=<?= $fetch_game['GameID']; ?>">
                     <div class="all-card">
                         <form action="" method="POST">
                             <img src="uploaded_files/<?= $fetch_game['GameImage']; ?>" class="Gameimage" alt="">

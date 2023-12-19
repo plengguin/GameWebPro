@@ -1,0 +1,144 @@
+@import url('https://fonts.cdnfonts.com/css/poppins');
+*{
+    margin: 0;
+    padding:0%;
+    box-sizing: border-box;
+    font-family: 'poppins',sans-serif;
+
+}
+/* body{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; 
+    margin: 0; 
+    border:2px solid red;
+  } */
+
+  nav{
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    padding: 20px 200px;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90%);
+    display:flex;
+    justify-content: space-between;
+    z-index: 99;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+ul{
+    list-style: none;
+}
+ul li{
+    display: inline-block;
+    position: relative;
+}
+ul li a{
+    display: block;
+    padding:20px 25px;
+    color:white;
+    text-decoration: none;
+    text-align: center;
+}
+
+ul li ul.dropdown li{
+    display: block;
+}
+ul li ul.dropdown{
+    width: 100%;
+    background:#74b6f7 ;
+    position: absolute;
+    z-index: 999;
+    display: none;
+}
+ul li a:hover{
+    background:#74b6f7 ;
+}
+ul li:hover ul.dropdown{
+    display: block;
+}
+.logo a{
+    text-decoration: none;
+    color:white;
+    font-weight: bold;
+    font-size: 2em;
+    
+}
+.filter-wrapper{
+
+    width: 95%;
+    margin: 10px auto;
+    
+    padding-left: 200px;
+  }
+  .button-value {
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 100px;
+    cursor: pointer;
+}
+  .button-value:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
+    
+  }
+.gamebox{
+    display: flex;
+    flex-direction: column;
+}
+.game-screen .screen{
+    width: 1500px; 
+    height: 600px;
+    border: 0; 
+    margin: 0; 
+    
+    padding-left: 350px;
+}
+
+.btndesc{
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 20%;
+    align-self: center;
+}
+.btndesc:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
+    
+}
+form{
+    display: flex;
+    flex-direction: column;
+    
+    
+}
+form .Favbtn{
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 20%;
+    align-self: center;
+    
+}
+form .Favbtn:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
+    
+}
+.heading{
+    text-align: center;
+}
