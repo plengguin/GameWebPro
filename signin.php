@@ -9,7 +9,7 @@ require_once 'components/server.php';
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signin</title>
-    <link rel="stylesheet" href="css/testlogin.css">
+    <link rel="stylesheet" href="css/signin.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -61,7 +61,7 @@ require_once 'components/server.php';
                         <label for="">Password</label>
                     </div>
                     <button type="submit" name="signin" class="btnSignin">Sign in</button>
-                    <p>don't have account yet? click here to <a href="log-sig.php">sign up</a></p>
+                    <p class="d">don't have account yet? click here to <a href="log-sig.php">sign up</a></p>
                 </form>
         </div>
         

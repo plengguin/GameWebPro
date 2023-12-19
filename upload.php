@@ -7,6 +7,22 @@
     } else {
         setcookie('GameID', create_unique_GameID(), time() + 60 * 60 * 24 * 30);
     }
+
+
+if (isset($_GET['delete_user']) && isset($_GET['delete_game'])) {
+        $delete_user_id = $_GET['delete_user'];
+        $delete_game_id = $_GET['delete_game'];
+    
+        $deletestmt = $conn->prepare("DELETE FROM game WHERE GameID = ? AND user_id = ?");
+        $deletestmt->execute([$delete_game_id, $delete_user_id]);
+    
+        if ($deletestmt) {
+            echo "<script>alert('Data has been deleted successfully');</script>";
+            header("refresh:1; url=upload.php");
+        }
+    }
+
+
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +30,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/upload.css" rel="stylesheet">
+    <link href="css/upload-game.css" rel="stylesheet">
     <script src="javas/app.js"></script>
     <title>x8</title>
 </head>
@@ -34,9 +50,9 @@
         <!-- <?php echo $row['firstname']?> -->
 
     <!-- All My Game -->
-    <div class="addgame">
-        <a href="Addgame.php"><button class="btnLogin">Add Game</button></a>
-    </div>
+    
+        <a href="Addgame.php"><button class="btnAdd">Add Game</button></a>
+    
     <section class="games">
         <table>
             <thead>
@@ -60,6 +76,14 @@
                                 <td><p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_gamelist['GameCreator']; ?></p></td>
                                 <td><p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_gamelist['FilePath']; ?></p></td>
                                 <td><p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_gamelist['GameDescription']; ?></p></td>
+                                <!-- <td><a href="upload_edit.php" class="btn btn-primary">Edit</a></td> -->
+                                <!-- <td><a href="?delete=<?= $row['id']; ?>" class="btn btn-danger" onclick="return confirm('are you sure you want to delete?')">Delete</a></td> -->
+                                <td>
+                                    <a href="?delete_user=<?= $user_id ?>&delete_game=<?= $fetch_gamelist['GameID']; ?>" 
+                                    class="btn-danger" 
+                                    onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+                                </td>
+
                                 <td>
                                     <form action="" method="post">
                                     

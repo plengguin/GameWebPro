@@ -1,27 +1,32 @@
 @import url('https://fonts.cdnfonts.com/css/poppins');
 *{
-    margin:0;
-    padding: 0;
+    margin: 0;
+    padding:0%;
     box-sizing: border-box;
     font-family: 'poppins',sans-serif;
+
 }
-body{
+/* body{
     display:flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
-}
+    min-height: 100vh; 
+    margin: 0; 
+    border:2px solid red;
+  } */
+
 nav{
     position: fixed;
     top: 0%;
     left: 0%;
     width: 100%;
     padding: 20px 200px;
-    background: #162938;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90%);
     display:flex;
     justify-content: space-between;
     z-index: 99;
-    /* border:2px solid red; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .logo a{
     text-decoration: none;
@@ -50,7 +55,7 @@ nav{
     text-decoration: none;
     color: white;
 }
-.menu a::after{
+.menu a:nth-child(-n+2):after{
     content: '';
     position:absolute;
     left: 0;
@@ -63,7 +68,7 @@ nav{
     transform: scaleX(0);
     transition: transform .5s ;
 }
-.menu a:hover::after{
+.menu a:hover:nth-child(-n+2):after{
     transform-origin: left;
     transform: scaleX(1);
 }
@@ -83,13 +88,59 @@ nav{
 }
 .menu .btnLogin:hover{
     background: #fff;
-    color: #162938;
+    color:#74b6f7;
+    color: ( circle farthest-corner at 10% 20%,  rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90% );
+}
+.filter-wrapper{
+
+    width: 95%;
+    margin: 10px auto;
+    
+    padding-left: 200px;
+  }
+  .button-value {
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 100px;
+    cursor: pointer;
+}
+  .button-value:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
+    
+  }
+.gamebox{
+    display: flex;
+    flex-direction: column;
 }
 .game-screen .screen{
-    width: 800px; 
+    width: 1500px; 
     height: 600px;
     border: 0; 
     margin: 0; 
-    padding-top: 100px;
+    
+    padding-left: 350px;
 }
 
+.btndesc{
+    border: 2px solid #6759ff;
+    padding: 1em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 10px;
+    cursor: pointer;
+    width: 20%;
+    align-self: center;
+}
+.btndesc:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
+    
+}
+.heading{
+    text-align: center;
+}

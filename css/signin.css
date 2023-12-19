@@ -10,6 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    
 }
 nav{
     position: fixed;
@@ -17,11 +18,11 @@ nav{
     left: 0%;
     width: 100%;
     padding: 20px 200px;
-    background: #162938;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90%);
     display:flex;
     justify-content: space-between;
     z-index: 99;
-    /* border:2px solid red; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
 .logo a{
     text-decoration: none;
@@ -50,7 +51,7 @@ nav{
     text-decoration: none;
     color: white;
 }
-.menu a::after{
+.menu a:nth-child(-n+2):after{
     content: '';
     position:absolute;
     left: 0;
@@ -63,7 +64,7 @@ nav{
     transform: scaleX(0);
     transition: transform .5s ;
 }
-.menu a:hover::after{
+.menu a:hover:nth-child(-n+2):after{
     transform-origin: left;
     transform: scaleX(1);
 }
@@ -83,7 +84,8 @@ nav{
 }
 .menu .btnLogin:hover{
     background: #fff;
-    color: #162938;
+    color:#74b6f7;
+    color: ( circle farthest-corner at 10% 20%,  rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90% );
 }
 .banner{
     display: flex;
@@ -110,9 +112,60 @@ nav{
     align-content: flex-start;
     justify-content: center;
     padding: 40px;
-    
+    margin-top: 80px;
     
 }
+
+.form.error {
+    position: relative;
+    width: 440px;
+    height: 550px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0, 0, .5);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 40px;
+}
+
+.form.success {
+    position: relative;
+    width: 440px;
+    height: 550px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0, 0, .5);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 40px;
+}
+
+.form.warning {
+    position: relative;
+    width: 440px;
+    height: 550px;
+    background: transparent;
+    border: 2px solid rgba(255,255,255,.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0,0, 0, .5);
+    display: flex;
+    flex-wrap: wrap;
+    align-content: flex-start;
+    justify-content: center;
+    padding: 40px;
+}
+
+
+
 .form h2{
     align-self: center;
     text-align: center;
@@ -122,17 +175,10 @@ nav{
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
+    padding-top: 50px;
     
     
 }
-.gender{
-    width: 200px; /* กำหนดความกว้างเป็น 200 พิกเซล */
-    height: 40px;
-    
-}
-/* .gender .icon{
-
-} */
 
 .input-box{
     
@@ -140,6 +186,7 @@ nav{
     width: 100%;
     height: 50px;
     border-bottom: 2px solid #162938;
+    margin-top: 25px;
    
 }
 .input-box:nth-child(n+4){
@@ -161,7 +208,7 @@ nav{
 
 }
 .input-box input:focus~label,.input-box input:valid~label{
-    top: 1px;
+    top: 0px;
 }
 .input-box input{
     width: 100%;
@@ -169,6 +216,7 @@ nav{
     background: transparent;
     border: none;
     outline: none;
+    
 }
 .input-box .icon{
     position: absolute;
@@ -176,21 +224,49 @@ nav{
     font-size: 1.2em;
     line-height: 57px;
 }
-@media (max-width:991px){
-    html{
-        font-size:55%;
-    }
+.btnSignin{
+    position: absolute;
+    right: 150px;
+    bottom: 100px;
+    border: 2px solid #6759ff;
+    padding: 0.5em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 10px;
+    cursor: pointer;
+    
+    align-self: center;
 }
-@media (max-width:768px){
-    header nav{
-        position: absolute;
-        top:99%;
-        left:0;
-        right: 0;
-    }
+.btnSignin:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
 }
-@media (max-width:450px){
-    html{
-        font-size:50%;
+
+
+
+
+    .alert {
+        padding: 15px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 4px;
     }
-}
+
+    .alert-danger {
+        color: #721c24;
+        background-color: #f8d7da;
+        border-color: #f5c6cb;
+    }
+
+    .alert-success {
+        color: #155724;
+        background-color: #d4edda;
+        border-color: #c3e6cb;
+    }
+
+    .alert-warning {
+        color: #856404;
+        background-color: #fff3cd;
+        border-color: #ffeeba;
+    }

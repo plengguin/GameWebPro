@@ -11,7 +11,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/main.css" rel="stylesheet">
+    <link href="css/web-main.css" rel="stylesheet">
     <script src="javas/slide.js"></script>
     <title>x8</title>
 </head>
@@ -23,36 +23,42 @@
     <!-- Banner Start-->
 
     <div class="filter-wrapper">
-      <div id="search-container">
-        <input
-          type="search"
-          id="search-input"
-          placeholder="Search product name here.."
-        />
-        <button id="search">Search</button>
-      </div>
+      
       <div id="buttons">
-        <button class="button-value" onclick="filterProduct('Action and Adventure Games')">
+        <a href="Action.php"><button class="button-value" onclick="filterProduct('Action and Adventure Games')">
           Action and Adventure Games
         </button>
+        </a>
+        <a href="Driving.php">
         <button class="button-value" onclick="filterProduct('Driving')">
             Driving
         </button>
+        </a>
+        <a href="Fighting.php">
         <button class="button-value" onclick="filterProduct('Fighting')">
             Fighting
         </button>
+        </a>
+        <a href="forgirl.php">
         <button class="button-value" onclick="filterProduct('For girls')">
         For girls
         </button>
+        </a>
+        <a href="Shooting.php">
         <button class="button-value" onclick="filterProduct('Shooting')">
         Shooting
         </button>
+        </a>
+        <a href="Sports.php">
         <button class="button-value" onclick="filterProduct('Sports')">
         Sports
         </button>
+        </a>
+        <a href="Other.php">
         <button class="button-value" onclick="filterProduct('Other')">
         Other
         </button>
+        </a>
         </div></div>
 
     <!-- Banner End -->
@@ -71,11 +77,12 @@
                 <div class="swiper">
                     <div class="swiper-wrapper">
                         <?php foreach ($games as $game) : ?>
-                            <div class="swiper-slide swiper-slide--one">
-                                <span>New</span>
-                                <div>
-                                    <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $game['NameOfGame']; ?></p>
-                                </div>
+                            <div class="card">
+                                <a href="gameplay.php?get_GameID=<?= $game['GameID']; ?>">
+                                <span><p class="des"><i class="name"></i><?= $game['NameOfGame']; ?></p></span>
+                                <img src="uploaded_files/<?= $game['GameImage']; ?>" class="Gameimage" alt="">
+                                <p class="cate"><i class="fas fa-india-rupee-sign"></i><?= $game['Category']; ?></p>
+                                </a>
                             </div>
                         <?php endforeach; ?>
                     </div>
@@ -91,60 +98,40 @@
     
     <!-- What's new -->
     <!-- Add game information -->
+    <h1 class="heading">All Games</h1>
     <section class="games">
-        <h1 class="heading">All Games</h1>
-    <?php
-        $select_game = $conn->prepare("SELECT * FROM `game`");
-        $select_game->execute();
-        if($select_game-> rowCount()>0){ while($fetch_game = $select_game-> fetch(PDO::FETCH_ASSOC)){
-    ?>
-    <div class="wrapper">
-        <div class="cols">
-            <div class="col" ontouchstart="this.classList.toggle('hover');">
-
-            <a href="gameplay.php?get_GameID=<?=$fetch_game['GameID'];?>">
-
-                <div class="container">
-                    <div class="front">
-                    <form action="" method="POST">
-                    <img src="uploaded_files/<?= $fetch_game['GameImage']; ?>" class="Gameimage" alt="">
-                        <div class="inner">
-                            <span>
-                                <div class="creator_icon">
-                                    <img src="" alt="">
-                                </div>
-                                <div class="game-name">
-                                    <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_game
-                                    ['NameOfGame']; ?></p>
-                                </div>
-                                <div class="rate">
-                                    <p>ratings</p>
-                                </div>
-                            </span>
-                        </div><!--inner--> 
-                    </div><!--front--> 
-                    <div class="back">
-                        <div class="inner">
-                            <p><?= $fetch_game['GameDescription'] ?></p>
-                        </div> <!--inner-->
-                    </div> <!--back-->           
-                    </form>
-                        
-                </div><!--container--></a>
-            </div><!--col-->
-        </div><!--cols-->
-        
+        <?php
+    $select_game = $conn->prepare("SELECT * FROM `game`");
+    $select_game->execute();
+    if ($select_game->rowCount() > 0) {
+        while ($fetch_game = $select_game->fetch(PDO::FETCH_ASSOC)) {
+?>
+        <div class="wrapper">
             
-    </div><!--wrapper-->
-                        <?php
-                                }
-                        }
-                        else{
-                            echo'<p class="empty">no games found!</p>';
-                        }
-                        ?>
-                        
-    </section>
+                <a href="gameplay.php?get_GameID=<?= $fetch_game['GameID']; ?>">
+                    <div class="all-card">
+                        <form action="" method="POST">
+                            <img src="uploaded_files/<?= $fetch_game['GameImage']; ?>" class="Gameimage" alt="">
+                            <div class="cardInfo">
+                            <div class="front">
+                            <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_game['NameOfGame']; ?></p>
+                            <p class="des"><i class="fas fa-india-rupee-sign"></i><?= $fetch_game['Category']; ?></p>
+                            </div>
+                            
+                            <div class="back">
+                            <p><?= $fetch_game['GameDescription'] ?></p>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </a>
+            
+        </div>
+<?php
+        }
+    }
+?>
+</div>
     <!-- Add game information -->       
     <script>
     var swiper = new Swiper(".swiper", {

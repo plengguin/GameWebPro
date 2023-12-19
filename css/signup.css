@@ -16,12 +16,16 @@ nav{
     top: 0%;
     left: 0%;
     width: 100%;
+    height: 90px;
     padding: 20px 200px;
-    background: #162938;
+    background: radial-gradient(circle farthest-corner at 10% 20%, rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90%);
     display:flex;
     justify-content: space-between;
     z-index: 99;
-    /* border:2px solid red; */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+.text{
+    top:6px;
 }
 .logo a{
     text-decoration: none;
@@ -50,7 +54,7 @@ nav{
     text-decoration: none;
     color: white;
 }
-.menu a::after{
+.menu a:nth-child(-n+2):after{
     content: '';
     position:absolute;
     left: 0;
@@ -63,7 +67,7 @@ nav{
     transform: scaleX(0);
     transition: transform .5s ;
 }
-.menu a:hover::after{
+.menu a:hover:nth-child(-n+2):after{
     transform-origin: left;
     transform: scaleX(1);
 }
@@ -83,7 +87,8 @@ nav{
 }
 .menu .btnLogin:hover{
     background: #fff;
-    color: #162938;
+    color:#74b6f7;
+    color: ( circle farthest-corner at 10% 20%,  rgba(171,102,255,1) 0%, rgba(116,182,247,1) 90% );
 }
 .banner{
     display: flex;
@@ -110,6 +115,7 @@ nav{
     align-content: flex-start;
     justify-content: center;
     padding: 40px;
+    margin-top: 100px;
     
 }
 
@@ -190,14 +196,16 @@ nav{
     width: 100%;
     height: 50px;
     border-bottom: 2px solid #162938;
+    margin-top: 10px;
    
 }
 .input-box:nth-child(n+4){
     
     width: 50%;
     height: 50px;
-
-   
+}
+form p{
+    margin-top: 8px;
 }
 .input-box label{
     position: absolute;
@@ -225,6 +233,24 @@ nav{
     right: 8px;
     font-size: 1.2em;
     line-height: 57px;
+}
+.btnSignup{
+    position: absolute;
+    right: 150px;
+    bottom: 100px;
+    border: 2px solid #6759ff;
+    padding: 0.5em 2.2em;
+    border-radius: 3em;
+    background-color: transparent;
+    color: #6759ff;
+    margin-top: 10px;
+    cursor: pointer;
+    
+    align-self: center;
+}
+.btnSignup:hover  {
+    background-color: #6759ff;
+    color: #ffffff;
 }
 
 

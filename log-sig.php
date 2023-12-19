@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup</title>
-    <link rel="stylesheet" href="css/testlogin.css">
+    <link rel="stylesheet" href="css/signup.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
@@ -80,14 +80,14 @@
                     <div class="input-box">
                         <span class="icon"><ion-icon  aria-describedby="date_of_birth"></ion-icon></span>
                         <input type="date" name="date_of_birth" required>
-                        <label for="">Date of birth</label>
+                        <label for=""></label>
                     </div>
                     <button type="submit" name="signup" class="btnSignup">Sign up</button>
                     <p>already signup? click here to <a href="signin.php">sign in</a></p>
 
                 </form>
         </div>
-        \
+        
     </div>
 
     <script>

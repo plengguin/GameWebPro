@@ -11,50 +11,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="css/web-main.css" rel="stylesheet">
+    <link href="css/web-mainuser.css" rel="stylesheet">
     <script src="javas/slide.js"></script>
     <title>x8</title>
 </head>
 <body>
     <!-- Nav Section Start -->
-    <?php include 'components/header.php';?>
+    <?php include 'components/userheader.php';?>
     <!-- Nav Section -->
 
     <!-- Banner Start-->
-
     <div class="filter-wrapper">
-      
-      <div id="buttons">
-        <a href="Action.php"><button class="button-value" onclick="filterProduct('Action and Adventure Games')">
+    <div id="buttons">
+        <a href="Action copy.php"><button class="button-value" onclick="filterProduct('Action and Adventure Games')">
           Action and Adventure Games
         </button>
         </a>
-        <a href="Driving.php">
+        <a href="Driving copy.php">
         <button class="button-value" onclick="filterProduct('Driving')">
             Driving
         </button>
         </a>
-        <a href="Fighting.php">
+        <a href="Fighting copy.php">
         <button class="button-value" onclick="filterProduct('Fighting')">
             Fighting
         </button>
         </a>
-        <a href="forgirl.php">
+        <a href="forgirl copy.php">
         <button class="button-value" onclick="filterProduct('For girls')">
         For girls
         </button>
         </a>
-        <a href="Shooting.php">
+        <a href="Shooting copy.php">
         <button class="button-value" onclick="filterProduct('Shooting')">
         Shooting
         </button>
         </a>
-        <a href="Sports.php">
+        <a href="Sports copy.php">
         <button class="button-value" onclick="filterProduct('Sports')">
         Sports
         </button>
         </a>
-        <a href="Other.php">
+        <a href="Other copy.php">
         <button class="button-value" onclick="filterProduct('Other')">
         Other
         </button>
@@ -63,10 +61,10 @@
 
     <!-- Banner End -->
     <!-- Add game information -->
-    <h1 class="heading">Action and Adventure Games</h1>
+    <h1 class="heading">Driving</h1>
     <section class="games">
         <?php
-    $select_game = $conn->prepare("SELECT * FROM `game` WHERE Category LIKE '%Action%'");
+    $select_game = $conn->prepare("SELECT * FROM `game` WHERE Category LIKE '%Driving%'");
     $select_game->execute();
     if ($select_game->rowCount() > 0) {
         while ($fetch_game = $select_game->fetch(PDO::FETCH_ASSOC)) {
